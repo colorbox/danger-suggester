@@ -2,11 +2,14 @@ require 'danger'
 require 'danger/suggester/file'
 require 'danger/suggester/suggestion'
 require 'git_diff'
+require 'pp'
 
 module Danger
   class DangerSuggester < ::Danger::Plugin
     def suggest
       suggestions_for_added_lines.each do |suggestion|
+        pp suggestion
+        pp '---'
         markdown(
           suggestion.message,
           file: suggestion.path,
